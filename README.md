@@ -1,5 +1,7 @@
-
 # pyWeather app
+Simple weather app using python-weather.
+Enter a location to get current weather and a forecast.
+
 ## Use a Virtual Environment for Python-Weather:
 
 ### Navigate to your project folder
