@@ -9,4 +9,3 @@ def test_openmeteo():
     now = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
     assert get_forecast(lat, lon, name, now)
-    
