@@ -1,8 +1,17 @@
-import asyncio
-from weather import getWeather, format_and_print_weather
+import datetime
+from meteo import get_forecast
 
 
-print("Python weather app")
-location = input("Enter a location: \n")
-weather_graz = asyncio.run(getWeather(location))
-format_and_print_weather(weather_graz)
+if __name__ == "__main__":
+
+    print("Python weather app")
+    # location = input("Enter a location: \n")
+    
+    lat = 47.07
+    lon = 15.44
+    name = "Graz"
+    now = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
+    weather = get_forecast(lat, lon, name, now)
+
+    print(weather)
