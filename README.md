@@ -1,6 +1,8 @@
 # pyWeather app
 Simple weather app using [open-meteo](https://open-meteo).  
-Enter a location to get current weather and a forecast.
+Enter a location to get current weather and a forecast.  
+  
+![Screenshot](screenshot.png)
 
 ### Navigate to your project folder
 cd /path/to/your/project
