@@ -20,7 +20,11 @@ if __name__ == "__main__":
             now = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
             weather_data = get_forecast(
-                location["lat"], location["lon"], location["full_name"], now
+                location["lat"],
+                location["lon"],
+                location["altitude"],
+                location["full_name"],
+                now,
             )
 
             if weather_data:

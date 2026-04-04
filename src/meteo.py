@@ -14,6 +14,7 @@ def get_coordinates(cityname):
             return {
                 "lat": result["latitude"],
                 "lon": result["longitude"],
+                "altitude": result["elevation"],
                 "full_name": f"{result['name']} ({result.get('admin1', 'Unbekannt')}, {result.get('country', '')})",
             }
         else:
@@ -24,7 +25,7 @@ def get_coordinates(cityname):
         return None
 
 
-def get_forecast(lat, lon, name, timestamp):
+def get_forecast(lat, lon, altitude, name, timestamp):
     url = f"https://api.open-meteo.com/v1/forecast?latitude={lat}&longitude={lon}&daily=weather_code,temperature_2m_max,temperature_2m_min&timezone=Europe%2FBerlin"
 
     try:
@@ -45,7 +46,12 @@ def get_forecast(lat, lon, name, timestamp):
                 }
             )
 
-        return {"name": name, "timestamp": timestamp, "forecast": forecast_days}
+        return {
+            "name": name,
+            "altitude": altitude,
+            "timestamp": timestamp,
+            "forecast": forecast_days,
+        }
     except Exception as e:
         print(f"Error at {name}: {e}")
         return None
@@ -94,6 +100,7 @@ def formatPrint(data):
     }
 
     print(f"\n>>> Weather for {data['name']} <<<")
+    print(f"Altitude: {data['altitude']} m")
     print(f"Timestamp: {data['timestamp']}")
     print(f"{'Datum':<12} | {'Max':<7} | {'Min':<7} | {'Code'}")
     print("-" * 40)
